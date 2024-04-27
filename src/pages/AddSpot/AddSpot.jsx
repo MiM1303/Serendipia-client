@@ -2,7 +2,18 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form"
 import Swal from "sweetalert2";
 import { FaFly } from "react-icons/fa";
+import { GrMapLocation } from "react-icons/gr";
 import "../AddSpot/AddSpot.css"
+import { FaLocationDot, FaUsers } from "react-icons/fa6";
+import { MdOutlineTimer } from "react-icons/md";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import { FaPencil } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { FaDollarSign } from "react-icons/fa";
+import { MdOutlineAddAPhoto } from "react-icons/md";
+
+
 
 
 const AddSpot = () => {
@@ -14,8 +25,30 @@ const AddSpot = () => {
       } = useForm();
 
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = (spot) => {
+        console.log(spot);
+
+        //send spot data to server
+        fetch('http://localhost:5000/add-spot', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(spot)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.insertedId)
+            {
+                Swal.fire({
+                    title: 'Success!',
+                    text: `Spot added successfully! Thank you for suggesting a new spot!!`,
+                    icon: 'success',
+                    confirmButtonText: 'Close'
+                  })
+            }
+        })
     }
 
     return (
@@ -25,7 +58,7 @@ const AddSpot = () => {
             </Helmet>
             <h2 className="text-center lg:text-4xl text-2xl mt-16 font-semibold text-[#442537]">Add A Tourist Spot!</h2>
             <p className="text-center mt-5 lg:text-xl">Know about a tourist spot you think others would love? Share with us by giving us the details below!</p>
-            <form onSubmit={handleSubmit(onSubmit)} className="mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 card-body text-2xl">
+            <form onSubmit={handleSubmit(onSubmit)} className="text-[#738e36] mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 card-body text-2xl">
 
                 {/* Image */}
                 <div className="">
@@ -33,8 +66,8 @@ const AddSpot = () => {
                         <span className="label-text text-lg md:text-xl">Image:</span>
                     </div>
                     <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                        <FaFly />
-                        <input type="url" className="grow p-1" placeholder="URL for the image of the spot" />
+                        <MdOutlineAddAPhoto />
+                        <input type="url" className="grow p-1" placeholder="URL for the image of the spot" {...register("photo", { required: true })}/>
                     </label>
                 </div>
                 {/* row-1 */}
@@ -46,7 +79,7 @@ const AddSpot = () => {
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                             <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Spot Name" />
+                            <input type="text" className="grow p-1" placeholder="Spot Name" {...register("name", { required: true })}/>
                         </label>
                     </div>
                     {/* item 2 */}
@@ -55,8 +88,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">Country:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Country" />
+                            <GrMapLocation />
+                            <input type="text" className="grow p-1" placeholder="Country" {...register("country", { required: true })}/>
                         </label>
                     </div>
                 </div>
@@ -69,8 +102,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">Location:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Location" />
+                            <FaLocationDot />
+                            <input type="text" className="grow p-1" placeholder="Location" {...register("location", { required: true })}/>
                         </label>
                     </div>
                     {/* item 2 */}
@@ -79,8 +112,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">Average Cost:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Average travel cost" />
+                            <FaDollarSign />
+                            <input type="number" className="grow p-1" placeholder="Average travel cost" {...register("cost", { required: true })}/>
                         </label>
                     </div>
                 </div>
@@ -93,8 +126,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">Travel Season:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Best season to travel there" />
+                            <TiWeatherPartlySunny />
+                            <input type="text" className="grow p-1" placeholder="Best season to travel there" {...register("season", { required: true })}/>
                         </label>
                     </div>
                     {/* item 2 */}
@@ -103,8 +136,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">Travel Time:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Total travel duration" />
+                            <MdOutlineTimer />
+                            <input type="text" className="grow p-1" placeholder="Total travel duration" {...register("duration", { required: true })}/>
                         </label>
                     </div>
                 </div>
@@ -117,8 +150,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">Total Visitors Per Year:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Total visitors/year" />
+                            <FaUsers />
+                            <input type="number" className="grow p-1" placeholder="Total visitors/year" {...register("visitors", { required: true })}/>
                         </label>
                     </div>
                     {/* item 2 */}
@@ -127,8 +160,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">Short Description:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Write a short description about the spot" />
+                            <FaPencil />
+                            <input type="text" className="grow p-1" placeholder="Write a short description about the spot" {...register("description", { required: true })}/>
                         </label>
                     </div>
                 </div>
@@ -141,8 +174,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">User Name:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Your Name" />
+                            <FaUser />
+                            <input type="text" className="grow p-1" placeholder="Your Name" {...register("username", { required: true })}/>
                         </label>
                     </div>
                     {/* item 2 */}
@@ -151,8 +184,8 @@ const AddSpot = () => {
                             <span className="label-text text-lg md:text-xl">User Email:</span>
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
-                            <FaFly />
-                            <input type="text" className="grow p-1" placeholder="Your Email" />
+                            <MdOutlineMailOutline />
+                            <input type="text" className="grow p-1" placeholder="Your Email" {...register("email", { required: true })}/>
                         </label>
                     </div>
                 </div>
