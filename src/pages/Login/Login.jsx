@@ -1,15 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const Login = () => {
 
     const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     console.log('Location in the login page',location);
     const navigate = useNavigate();
@@ -99,11 +101,14 @@ const Login = () => {
                 </label>
                 <input type="email" placeholder="email" className="input input-bordered" {...register("email", { required: true })} />
                 </div>
-                <div className="form-control">
+                <div className="form-control relative">
                 <label className="label">
-                    <span className="text-base lg:text-lg label-text">Password</span>
-                </label>
-                <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true })} />
+                        <span className="label-text text-base lg:text-lg">Password</span>
+                    </label>
+                    <input type={showPassword? "text" : "password"} placeholder="password" className="input input-bordered"  {...register("password", { required: true })}/>
+                        <span className="absolute top-[52px] right-5  lg:top-14 lg:right-8" onClick={()=>setShowPassword(!showPassword)}>
+                                {showPassword ? <FaEyeSlash className="text-[#4F772D] font-semibold text-2xl"></FaEyeSlash> : <FaEye className="text-[#4F772D]  font-semibold text-2xl"></FaEye>}
+                        </span>
                 <label className="label">
                     <a href="#" className="label-text-alt link link-hover text-sm mt-2">Forgot password?</a>
                 </label>
