@@ -1,0 +1,29 @@
+.slide{
+    color: greenyellow;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
+}
+
+.navbar a:hover{
+    background-color: #ECF39E;
+    color: #31572C;
+}
+.navbar a:active{
+    background-color: #A7C957 !important;
+}
+
+.swiper-button-prev, .swiper-button-next{
+    color: #A7C957;
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet-active{
+    color: greenyellow;
+    background-color: #A7C957;
+}
