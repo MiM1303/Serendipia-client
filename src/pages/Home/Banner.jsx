@@ -71,7 +71,7 @@ const Banner = () => {
             </Swiper>
 
 
-            <div className='App absolute bottom-[170px] left-[66px] md:left-[210px] lg:left-[550px] lg:bottom-1/2 z-10 font-marker text-2xl md:text-3xl lg:text-5xl text-white text-center'>
+            <div className='App absolute bottom-[170px] left-[66px] md:left-[210px] lg:left-[530px] lg:bottom-1/2 z-10 font-marker text-2xl md:text-3xl lg:text-5xl text-white text-center'>
                 <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'bold' }}>
                     Explore the magic of <br /> {' '}
                     <span style={{ color: '#ECF39E', fontWeight: 'bold', font:'marker' }}>

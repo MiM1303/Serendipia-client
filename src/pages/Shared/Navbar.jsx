@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
-// import { AuthContext } from "../providers/AuthProvider";
-// import { useContext, useState } from "react";
-import { useState } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import { useContext, useState } from "react";
 import { GiDragonfly } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import "../../App.css"
 
 const Navbar = () => {
 
-    // const {user, logOut} = useContext(AuthContext)
-    const {user, logOut} = useState(false)
+    const {user, logOut} = useContext(AuthContext)
 
 
     const signOutUser = () => {
@@ -20,11 +18,11 @@ const Navbar = () => {
 
     const navLinks = <>
         <li className="font-medium font-3xl text-white"><NavLink to="/">Home</NavLink></li>
-        <li className="font-medium font-3xl text-white"><NavLink to="/login">All Tourists Spot</NavLink></li>
-        <li className="font-medium font-3xl text-white"><NavLink to="/register">Add Tourist Spot</NavLink></li>
-        <li className="font-medium font-3xl text-white"><NavLink to="/profile">My List</NavLink></li>
-        {/* <li className="font-medium font-3xl text-white"><NavLink to="/profile">Login</NavLink></li> */}
-        <li className="font-medium font-3xl text-white"><NavLink to="/profile">Register</NavLink></li>
+        <li className="font-medium font-3xl text-white"><NavLink to="/spots">All Tourists Spot</NavLink></li>
+        <li className="font-medium font-3xl text-white"><NavLink to="/add-spot">Add Tourist Spot</NavLink></li>
+        <li className="font-medium font-3xl text-white"><NavLink to="/my-spots">My List</NavLink></li>
+        {/* <li className="font-medium font-3xl t*ext-white"><NavLink to="/profile">Login</NavLink></li> */}
+        <li className="font-medium font-3xl text-white"><NavLink to="/register">Register</NavLink></li>
         
 
     </>
@@ -41,7 +39,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                     </div>
-                    <a className="font-exo2 font-semibold text-lg md:text-xl lg:text-3xl p-1 text-white"> <Link className="flex items-center justify-center gap-1 md:gap-2 font-caveat tracking-widest"> <span><span className="text-xl md:text-2xl lg:text-4xl">S</span>erendipia  </span><GiDragonfly className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#386641] md:text-[#A7C957]"/></Link></a>
+                    <a className="font-exo2 font-semibold text-lg md:text-xl lg:text-3xl p-1 text-white"> <Link className="flex items-center justify-center gap-1 md:gap-2 font-caveat tracking-widest">  <GiDragonfly className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#386641] md:text-[#A7C957]"/> <span><span className="text-xl md:text-2xl lg:text-4xl">S</span>erendipia  </span></Link></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-base">
@@ -60,7 +58,7 @@ const Navbar = () => {
                     </div>
                     :
                     <div className="navbar-end ">
-                        <Link to={'/login'} className="hover:bg-[#50a9af] p-2 md:p-3 lg:p-3 btn border-none text-xs lg:text-sm bg-[#2e4057] text-white">Log In</Link>
+                        <Link to='/login' className="hover:bg-[#50a9af] p-2 md:p-3 lg:p-3 btn border-none text-xs lg:text-sm bg-[#6A994E] text-white">Log In</Link>
                     </div>
                     }
                 
