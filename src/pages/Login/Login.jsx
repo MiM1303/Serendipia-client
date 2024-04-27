@@ -7,6 +7,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import "../../App.css"
 
 const Login = () => {
 

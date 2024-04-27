@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import "../../App.css"
 
 const Register = () => {
     const {createUser, updateUserInfo, setUser} = useContext(AuthContext)   
@@ -64,10 +65,11 @@ const Register = () => {
         })
         .catch(error =>{
             console.error(error)
+            const msg = error.message;
             Swal.fire({
-                title: 'Success!',
-                text: {error},
-                icon: 'success',
+                title: 'Error!',
+                text: msg,
+                icon: 'error',
                 confirmButtonText: 'Cool'
               })
         })
