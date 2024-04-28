@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form"
 import Swal from "sweetalert2";
+import "../AddSpot/AddSpot.css"
 import { FaFly } from "react-icons/fa";
 import { GrMapLocation } from "react-icons/gr";
-import "../AddSpot/AddSpot.css"
 import { FaLocationDot, FaUsers } from "react-icons/fa6";
 import { MdOutlineTimer } from "react-icons/md";
 import { TiWeatherPartlySunny } from "react-icons/ti";
@@ -89,7 +89,16 @@ const AddSpot = () => {
                         </div>
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                             <GrMapLocation />
-                            <input type="text" className="grow p-1" placeholder="Country" {...register("country", { required: true })}/>
+                            {/* <input type="" className="grow p-1" placeholder="Country" {...register("country", { required: true })}/> */}
+                            <select {...register("country", { required: true })} type="text" className="grow input-info border-0 outline-0 " placeholder="Country">
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                    <option value="Vietnam">Vietnam</option>
+                                    <option value="Cambodia">Cambodia</option>
+                            </select>
+                                {errors.country && <span>This field is required</span>}
                         </label>
                     </div>
                 </div>

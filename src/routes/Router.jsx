@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import AddSpot from "../pages/AddSpot/AddSpot";
+import AllSpots from "../pages/AllSpots/AllSpots";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path: "/add-spot",
                 element: <PrivateRoute><AddSpot></AddSpot></PrivateRoute>,
+            },
+            {
+                path: "/all-spots",
+                element: <AllSpots></AllSpots>,
+                loader: () => fetch('http://localhost:5000/all-spots')
             },
             
         ]
