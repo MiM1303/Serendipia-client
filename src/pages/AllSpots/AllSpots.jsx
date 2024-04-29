@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SpotCard from "../SpotCard/SpotCard";
 
 
 const AllSpots = () => {
     const allSpots = useLoaderData();
-    const [spots, setSpots] = useState()
+    // const [spots, setSpots] = useState(allSpots);
     return (
         <div>
             <h2 className="text-center lg:text-4xl text-2xl mt-16 font-semibold text-[#442537]">All Tourist Spots!</h2>
@@ -18,10 +18,7 @@ const AllSpots = () => {
 
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {
-                    allSpots.map(spot=> <SpotCard 
-                        key={spot._id} spot={spot}>
-
-                        </SpotCard> )
+                    allSpots.map(spot=> <SpotCard key={spot._id} spot={spot}></SpotCard>)
                 }
             </div>
         </div>

@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import AddSpot from "../pages/AddSpot/AddSpot";
 import AllSpots from "../pages/AllSpots/AllSpots";
+import MyList from "../pages/MyList/MyList";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,15 @@ const router = createBrowserRouter([
                 path: "/all-spots",
                 element: <AllSpots></AllSpots>,
                 loader: () => fetch('http://localhost:5000/all-spots')
+            },
+            {
+                path: "/my-spots",
+                element: <PrivateRoute><MyList></MyList></PrivateRoute>,
+            },
+            {
+                path: `/updateSpot/:id`,
+                element: <PrivateRoute><MyList></MyList></PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:5000/updateSpot/${params.id}`)
             },
             
         ]

@@ -5,7 +5,7 @@ import Navbar from "../pages/Shared/Navbar";
 
 const Root = () => {
     return (
-        <div>
+        <div className="font-marcellus">
             <div className=" container px-4 md:mt-4 mx-auto lg:mt-16">
                 <Navbar></Navbar>
                 <Outlet></Outlet>
