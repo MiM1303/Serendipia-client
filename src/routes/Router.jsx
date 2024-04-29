@@ -39,6 +39,11 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/all-spots')
             },
             {
+                path: "/all-spots/sorted",
+                element: <AllSpots></AllSpots>,
+                loader: () => fetch('http://localhost:5000/all-spots/sorted')
+            },
+            {
                 path: "/all-spots/:id",
                 element: <ViewDetails></ViewDetails>,
                 loader: ({params}) => fetch(`http://localhost:5000/all-spots/${params.id}`)
