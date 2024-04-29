@@ -28,7 +28,11 @@ const Update = () => {
     const onSubmit = (updatedSpot, event) =>{
         event.preventDefault();
         console.log(updatedSpot);
-        const form = event.target;
+        // updatedSpot.cost = parseInt(updatedSpot.cost);
+        // console.log(updatedSpot.cost);
+        // const form = event.target;
+        // updatedSpot[cost] = parseInt(updatedSpot.cost);
+        // console.log(updatedSpot.cost);
 
 
         //send a data to the server
@@ -49,10 +53,11 @@ const Update = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                   })
+                //   form.reset();
             }
             
         })
-        form.reset();
+        
     }
 
 
@@ -95,7 +100,7 @@ const Update = () => {
                         <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
                             <GrMapLocation />
                             {/* <input type="" className="grow p-1" placeholder="Country" {...register("country", { required: true })}/> */}
-                            <select defaultValue={country} type="text" className="grow input-info border-0 outline-0 " placeholder="Country" {...register("location", { required: true })}>
+                            <select defaultValue={country} type="text" className="grow input-info border-0 outline-0 " placeholder="Country" {...register("country", { required: true })}>
                                     <option value="Bangladesh">Bangladesh</option>
                                     <option value="Indonesia">Indonesia</option>
                                     <option value="Thailand">Thailand</option>

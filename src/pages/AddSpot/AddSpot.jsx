@@ -27,6 +27,7 @@ const AddSpot = () => {
 
     const onSubmit = (spot) => {
         console.log(spot);
+        spot.cost = parseInt(spot.cost);
 
         //send spot data to server
         fetch('http://localhost:5000/add-spot', {
