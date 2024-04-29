@@ -54,7 +54,7 @@ const AddSpot = () => {
     return (
         <div className="">
             <Helmet>
-                <title>Serendipia | Register</title>
+                <title>Serendipia | Add Spot</title>
             </Helmet>
             <h2 className="text-center lg:text-4xl text-2xl mt-16 font-semibold text-[#442537]">Add A Tourist Spot!</h2>
             <p className="text-center mt-5 lg:text-xl">Know about a tourist spot you think others would love? Share with us by giving us the details below!</p>

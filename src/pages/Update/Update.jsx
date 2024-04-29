@@ -1,12 +1,216 @@
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form"
+import Swal from "sweetalert2";
+import "../AddSpot/AddSpot.css"
+import { FaFly } from "react-icons/fa";
+import { GrMapLocation } from "react-icons/gr";
+import { FaLocationDot, FaUsers } from "react-icons/fa6";
+import { MdOutlineTimer } from "react-icons/md";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import { FaPencil } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { FaDollarSign } from "react-icons/fa";
+import { MdOutlineAddAPhoto } from "react-icons/md";
 
 
 const Update = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm();
+    
     const spotInfo = useLoaderData();
-    console.log(spotInfo);
+    const {_id, name, location, country, cost, duration, season, description, visitors, photo, username, email} = spotInfo;
+
+    const onSubmit = (updatedSpot, event) =>{
+        event.preventDefault();
+        console.log(updatedSpot);
+        const form = event.target;
+
+
+        //send a data to the server
+        fetch(`http://localhost:5000/updateSpot/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(updatedSpot)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.modifiedCount>0){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Spot Updated Successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+            
+        })
+        form.reset();
+    }
+
+
     return (
-        <div>
-            <h2>Update page</h2>
+        <div className="">
+            <Helmet>
+                <title>Serendipia | Add Spot</title>
+            </Helmet>
+            <h2 className="text-center lg:text-4xl text-2xl mt-16 font-semibold text-[#442537]">Update A Tourist Spot!</h2>
+            <p className="text-center mt-5 lg:text-xl">Want to update some information about a tourist spot you added before? Update it by correcting the details below!</p>
+            <form onSubmit={handleSubmit(onSubmit)} className="text-[#738e36] mx-auto grid grid-cols-1 p-2 md:p-8 md:gap-4 card-body text-2xl">
+
+                {/* Image */}
+                <div className="">
+                    <div className="label">
+                        <span className="label-text text-lg md:text-xl">Image:</span>
+                    </div>
+                    <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                        <MdOutlineAddAPhoto />
+                        <input type="url" className="grow p-1" placeholder="URL for the image of the spot" defaultValue={photo} {...register("photo", { required: true })}/>
+                    </label>
+                </div>
+                {/* row-1 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Tourist Spot Name:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <FaFly />
+                            <input type="text" className="grow p-1" placeholder="Spot Name" defaultValue={name} {...register("name", { required: true })}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Country:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <GrMapLocation />
+                            {/* <input type="" className="grow p-1" placeholder="Country" {...register("country", { required: true })}/> */}
+                            <select defaultValue={country} type="text" className="grow input-info border-0 outline-0 " placeholder="Country" {...register("location", { required: true })}>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                    <option value="Vietnam">Vietnam</option>
+                                    <option value="Cambodia">Cambodia</option>
+                            </select>
+                                {errors.country && <span>This field is required</span>}
+                        </label>
+                    </div>
+                </div>
+
+                {/* row-2 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Location:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <FaLocationDot />
+                            <input type="text" className="grow p-1" placeholder="Location" defaultValue={location} {...register("location", { required: true })}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Average Cost:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <FaDollarSign />
+                            <input type="number" className="grow p-1" placeholder="Average travel cost" defaultValue={cost} {...register("cost", { required: true })}/>
+                        </label>
+                    </div>
+                </div>
+                
+                {/* row-3 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Travel Season:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <TiWeatherPartlySunny />
+                            <input type="text" className="grow p-1" placeholder="Best season to travel there" defaultValue={season} {...register("season", { required: true })}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Travel Time:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <MdOutlineTimer />
+                            <input type="text" className="grow p-1" placeholder="Total travel duration" defaultValue={duration} {...register("duration", { required: true })}/>
+                        </label>
+                    </div>
+                </div>
+
+                {/* row-4 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Total Visitors Per Year:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <FaUsers />
+                            <input type="number" className="grow p-1" placeholder="Total visitors/year" defaultValue={visitors} {...register("visitors", { required: true })}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">Short Description:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center text-base md:text-xl h-16 gap-2">
+                            <FaPencil />
+                            <input type="text" className="grow p-1" placeholder="Write a short description about the spot" defaultValue={description} {...register("description", { required: true })}/>
+                        </label>
+                    </div>
+                </div>
+
+                {/* row-5 */}
+                <div className="form-control flex flex-col md:flex-row gap-4 md:gap-14">
+                      {/* item 1 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">User Name:</span>
+                        </div>
+                        <label className="input input-bordered flex items-center bg-base-200 text-base md:text-xl h-16 gap-2">
+                            <FaUser />
+                            <input disabled type="text" className="grow p-1" placeholder="Your Name" defaultValue={username}/>
+                        </label>
+                    </div>
+                    {/* item 2 */}
+                    <div className="md:w-1/2">
+                        <div className="label">
+                            <span className="label-text text-lg md:text-xl">User Email:</span>
+                        </div>
+                        <label className="input input-bordered bg-base-200 flex items-center text-base md:text-xl h-16 gap-2">
+                            <MdOutlineMailOutline />
+                            <input disabled type="text" className="grow p-1 " placeholder="Your Email" defaultValue={email}/>
+                        </label>
+                    </div>
+                </div>
+                
+                
+                
+                <div className="form-control mt-6">
+                <button className="btn bg-[#6A994E] hover:bg-[#8aae37] text-white text-base lg:text-xl font-medium pb-10 pt-4 flex items-center justify-center">Update</button>
+                </div>
+            </form>
+           
         </div>
     );
 };

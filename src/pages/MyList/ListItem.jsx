@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../providers/AuthProvider";
 
-const ListItem = ({spot}) => {
+const ListItem = ({spot, mySpots, setMySpots}) => {
     const {_id, name, country, location, cost, duration, photo} = spot;
     const {user} = useContext(AuthContext);
     const userEmail = user.email;
@@ -34,7 +34,9 @@ const ListItem = ({spot}) => {
                             text: "The spot has been deleted!",
                             icon: "success"
                           });
-                          
+                        // const remaining = mySpots.filter(cof => cof._id !== _id);
+                        // const remaining = mySpots.filter(sp => sp._id !== _id);
+                        setMySpots(mySpots.filter(sp => sp._id !== _id)); 
                     }
                 })
             }
@@ -69,7 +71,7 @@ const ListItem = ({spot}) => {
             <td>{duration} Days</td>
             <th>
                 <Link to={`/updateSpot/${_id}`}>
-                <   button className="btn btn-ghost btn-xs">Update</button>
+                    <button className="btn btn-ghost btn-xs">Update</button>
                 </Link>
             </th>
             <th>

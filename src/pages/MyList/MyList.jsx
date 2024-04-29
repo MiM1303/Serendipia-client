@@ -49,7 +49,9 @@ const MyList = () => {
                     {
                         mySpots.map(spot=> <ListItem 
                             key={spot._id}
-                            spot={spot}></ListItem>)
+                            spot={spot}
+                            mySpots={mySpots}
+                            setMySpots={setMySpots}></ListItem>)
                     }
 
                     </tbody>                    
