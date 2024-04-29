@@ -20,9 +20,9 @@ const SpotCard = ({spot}) => {
                     <p className="md:text-base lg:text-lg flex items-center gap-2"><MdOutlineTimer className="text-blue-800 text-2xl" />{season}</p>
                     <p className="md:text-base lg:text-lg flex items-center gap-2"><MdOutlineTimer className="text-blue-800 text-2xl" />{description}</p>
                     <div className="card-actions justify-end">
-                        {/* <Link to={`/spot-details/`}> */}
-                            <button className="btn bg-[#50a9af] text-white text-lg hover:bg-[#2e4057]">View Property</button>
-                        {/* </Link> */}
+                        <Link to={`/all-spots/${_id}`}>
+                            <button className="btn bg-[#50a9af] text-white text-lg hover:bg-[#2e4057]">View Spot Details</button>
+                        </Link>
                     </div>
                     
                 </div>

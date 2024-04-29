@@ -9,6 +9,7 @@ import AddSpot from "../pages/AddSpot/AddSpot";
 import AllSpots from "../pages/AllSpots/AllSpots";
 import MyList from "../pages/MyList/MyList";
 import Update from "../pages/Update/Update";
+import ViewDetails from "../pages/ViewDetails/ViewDetails";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
                 path: "/all-spots",
                 element: <AllSpots></AllSpots>,
                 loader: () => fetch('http://localhost:5000/all-spots')
+            },
+            {
+                path: "/all-spots/:id",
+                element: <ViewDetails></ViewDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/all-spots/${params.id}`)
             },
             {
                 path: "/my-spots",
