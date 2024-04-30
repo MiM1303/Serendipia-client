@@ -10,6 +10,7 @@ import AllSpots from "../pages/AllSpots/AllSpots";
 import MyList from "../pages/MyList/MyList";
 import Update from "../pages/Update/Update";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
+import Countries from "../pages/Countries/Countries";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
                 element: <Home></Home>,
                 loader: () => fetch('http://localhost:5000/all-spots'),
             },
+            // {
+            //     path: '/',
+            //     element: <Countries></Countries>,
+            //     loader: () => fetch('http://localhost:5000/countries'),
+            // },
             {
                 path: '/login',
                 element: <Login></Login>,
