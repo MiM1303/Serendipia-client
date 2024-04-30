@@ -20,8 +20,6 @@ const ViewDetails = () => {
                     <div className='flex flex-col gap-5 mb-10'>
                         <p className='text-lg lg:text-xl'><span className='font-bold '>Location:</span> {location}</p>
                         <p className='text-lg lg:text-xl'><span className='font-bold'>Country:</span> {country}</p>
-                        <p className='font-bold text-lg lg:text-xl'>Facilities:</p>
-
                         <p className='text-lg lg:text-xl'><span className='font-bold '>Trip Duration:</span> {duration}</p>
                         <p className='text-lg lg:text-xl'><span className='font-bold '>Total Cost:</span> {cost}</p>
                         <p className='text-lg lg:text-xl'><span className='font-bold '>Which season to visit:</span> {season}</p>
