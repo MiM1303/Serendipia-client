@@ -7,21 +7,15 @@ const MyList = () => {
 
     const {user} = useContext(AuthContext);
     const [mySpots, setMySpots] = useState([]);
-    // const url = `http://localhost:5000/my-spots/${user?.email}`;
     const userEmail = user.email;
     console.log(userEmail);
     
 
     useEffect(()=>{
-        // fetch(`http://localhost:5000/my-spots/:${user?.email}`)
-        fetch(`http://localhost:5000/my-spots/${userEmail}`)
+        fetch(`https://serendipia-server.vercel.app/my-spots/${userEmail}`)
             .then(res=>res.json())
-            .then(data=>{
-                // console.log(data);
-                setMySpots(data);
-                console.log(mySpots);
-    })
-    }, [user])
+            .then(data=>setMySpots(data))
+    },[user])
 
     return (
         <div>

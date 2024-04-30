@@ -21,13 +21,13 @@ const ListItem = ({spot, mySpots, setMySpots}) => {
           })
           .then((result)=>{
             if(result.isConfirmed){
-                fetch(`http://localhost:5000/my-spots/${userEmail}/${_id}`, {
+                fetch(`https://serendipia-server.vercel.app/add-spot/${_id}`, {
                     method: "DELETE",
                 })
                 .then(res=>res.json())
                 .then(data=>{
                     console.log(data);
-                    if(data.deleteCount>0)
+                    if(data.deletedCount>0)
                     {
                         Swal.fire({
                             title: "Deleted!",
@@ -36,7 +36,7 @@ const ListItem = ({spot, mySpots, setMySpots}) => {
                           });
                         // const remaining = mySpots.filter(cof => cof._id !== _id);
                         // const remaining = mySpots.filter(sp => sp._id !== _id);
-                        setMySpots(mySpots.filter(sp => sp._id !== _id)); 
+                        setMySpots(mySpots.filter(sp=>sp._id!==_id)); 
                     }
                 })
             }

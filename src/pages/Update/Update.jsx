@@ -36,7 +36,7 @@ const Update = () => {
 
 
         //send a data to the server
-        fetch(`http://localhost:5000/updateSpot/${_id}`, {
+        fetch(`https://serendipia-server.vercel.app/updateSpot/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

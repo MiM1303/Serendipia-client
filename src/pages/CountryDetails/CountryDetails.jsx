@@ -6,8 +6,7 @@ const CountryDetails = () => {
     const {country} = useParams();
     const [spots, setSpots] = useState([]);
     useEffect(()=>{
-        // fetch(http://localhost:5000/myspots/${country})
-        fetch(`http://localhost:5000/all-spots/${country}`)
+        fetch(`https://serendipia-server.vercel.app/all-spots/${country}`)
         .then(res=>res.json())
         .then(data=>setSpots(data))
     },[country])

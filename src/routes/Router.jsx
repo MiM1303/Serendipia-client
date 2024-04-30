@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/all-spots'),
+                loader: () => fetch('https://serendipia-server.vercel.app/all-spots')
             },
             {
                 path: `/countries/:country`,
@@ -42,17 +42,17 @@ const router = createBrowserRouter([
             {
                 path: "/all-spots",
                 element: <AllSpots></AllSpots>,
-                loader: () => fetch('http://localhost:5000/all-spots')
+                loader: () => fetch('https://serendipia-server.vercel.app/all-spots')
             },
             {
                 path: "/all-spots/sorted",
                 element: <AllSpots></AllSpots>,
-                loader: () => fetch('http://localhost:5000/all-spots/sorted')
+                loader: () => fetch('https://serendipia-server.vercel.app/all-spots/sorted')
             },
             {
                 path: "/all-spots/:id",
                 element: <ViewDetails></ViewDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/all-spots/${params.id}`)
+                loader: ({params}) => fetch(`https://serendipia-server.vercel.app/all-spots/${params.id}`)
             },
             {
                 path: "/my-spots",
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             {
                 path: `/updateSpot/:id`,
                 element: <PrivateRoute><Update></Update></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/add-spot/${params.id}`)
+                loader: ({params}) => fetch(`https://serendipia-server.vercel.app/add-spot/${params.id}`)
             },
             
         ]

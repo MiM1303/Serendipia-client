@@ -30,7 +30,7 @@ const AddSpot = () => {
         spot.cost = parseInt(spot.cost);
 
         //send spot data to server
-        fetch('http://localhost:5000/add-spot', {
+        fetch('https://serendipia-server.vercel.app/add-spot', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
