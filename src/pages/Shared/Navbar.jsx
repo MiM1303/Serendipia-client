@@ -39,7 +39,7 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                     </div>
-                    <a className="font-exo2 font-semibold text-lg md:text-xl lg:text-3xl p-1 text-white"> <Link className="flex items-center justify-center gap-1 md:gap-2 font-caveat tracking-widest">  <GiDragonfly className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#386641] md:text-[#A7C957]"/> <span><span className="text-xl md:text-2xl lg:text-4xl">S</span>erendipia  </span></Link></a>
+                    <a className="font-caveat font-semibold text-lg md:text-xl lg:text-3xl p-1 text-white"> <Link className="flex items-center justify-center gap-1 md:gap-2 font-caveat tracking-widest">  <GiDragonfly className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#386641] md:text-[#A7C957]"/> <span><span className="text-xl md:text-2xl lg:text-4xl">S</span>erendipia  </span></Link></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-base">
