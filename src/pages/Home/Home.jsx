@@ -42,7 +42,7 @@ const Home = () => {
             
             {/* Tourist Spots Section */}
             <div className='text-center my-8 md:my-12 lg:my-16'>
-                <h2 className='text-3xl'>Popular Tourist Spots</h2>
+                <h2 className='text-3xl'><span className='font-bold text-[#52B69A]'>Popular</span> Tourist Spots</h2>
                 <p className='my-2 text-xl '>Check out some of our most popular tourist spots to pick for your vacations and getaways!</p>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-10'>
@@ -53,10 +53,10 @@ const Home = () => {
            
             {/* Countries Section */}
             <div className='text-center my-8 md:my-12 lg:my-16'>
-                <h2 className='text-3xl'>Destination Countries</h2>
+                <h2 className='text-3xl'><span className='font-bold text-[#52B69A]'>Destination</span> Countries</h2>
                 <p className='my-2 text-xl '>See the countries we offer our services in! Check out some stunning places in these countries!!</p>
             </div>
-            <div className='grid grid-cols-3 gap-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
                     countries.map(country=><CountryCard key={country._id} countryInfo={country}></CountryCard>)
                 }
@@ -66,7 +66,7 @@ const Home = () => {
              {/* Map Leaflet */}
 
              <div className='text-center my-8 md:my-12 lg:my-16'>
-                <h2 className='text-3xl'>Find Us</h2>
+                <h2 className='text-3xl'><span className='font-bold text-[#52B69A]'>Find</span> Us</h2>
                 <p className='my-2 text-xl '>Got any inquiries regarding your travels or information about tourist spot? Do not hesitate to reach out to us!!</p>
             </div>
 
@@ -89,18 +89,18 @@ const Home = () => {
 
                     {/* grid information */}
                     <div className='grid grid-cols-2 gap-4'>
-                        <div className=' border text-center p-10 flex flex-col justify-center gap-3 items-center hover:bg-red-200 shadow-md'>
+                        <div className=' border text-center p-10 flex flex-col justify-center gap-1 lg:gap-3 items-center hover:bg-red-200 shadow-md'>
                             <FiPhoneCall className='text-red-400 text-3xl mx-auto'/>
                             <h2>Call Us</h2>
                             <p>01523456789</p>
                         </div>
 
-                        <div className=' border text-center p-10 flex flex-col justify-center gap-3 items-center hover:bg-red-200 shadow-md'>
+                        <div className=' border text-center p-10 flex flex-col justify-center gap-1 lg:gap-3 items-center hover:bg-red-200 shadow-md'>
                             <MdOutlineMailOutline className='text-red-400 text-3xl mx-auto'/>
                             <h2>Email Us</h2>
                             <p>jfmirza1303@gmail.com</p>
                         </div>
-                        <div className='col-span-2 border text-center p-10 flex flex-col justify-center gap-3 items-center hover:bg-red-200 shadow-md'>
+                        <div className='col-span-2 border text-center p-10 flex flex-col justify-center gap-1 lg:gap-3 items-center hover:bg-red-200 shadow-md'>
                             <IoLocationOutline className='text-red-400 text-3xl mx-auto'/>
                             <h2>Our Address</h2>
                             <p>Mirpur-14, Dhaka, Bangladesh</p>
@@ -117,7 +117,7 @@ const Home = () => {
 
             {/* FAQ */}
             <div className='text-center my-8 md:my-12 lg:my-16'>
-                <h2 className='text-3xl'>Frequently Asked Questions</h2>
+                <h2 className='text-3xl'><span className='font-bold text-[#52B69A]'>Frequently</span> Asked Questions</h2>
                 <p className='my-2 text-xl '>Got any inquiries regarding your travels or information about tourist spot? Check out some commonly asked questions!</p>
             </div>
             <div>

@@ -203,7 +203,7 @@ const AddSpot = () => {
                 
                 
                 <div className="form-control mt-6">
-                <button className="btn bg-[#6A994E] hover:bg-[#8aae37] text-white text-base lg:text-xl font-medium pb-10 pt-4 flex items-center justify-center">Add</button>
+                <button className="btn bg-[#99D98C] hover:bg-[#B5E48C] text-[#2d6a4f] text-base font-bold lg:text-xl  pb-10 pt-4 flex items-center justify-center">Add</button>
                 </div>
             </form>
            

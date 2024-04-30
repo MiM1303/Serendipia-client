@@ -115,7 +115,7 @@ const Login = () => {
                 </label>
                 </div>
                 <div className="form-control mt-6">
-                <button className="btn bg-[#196680] text-white text-base hover:bg-[#50a9af] lg:text-xl font-medium pb-10 pt-5 flex items-center justify-center">Login</button>
+                <button className="btn bg-[#99D98C] hover:bg-[#B5E48C] text-[#2d6a4f] text-base font-bold  lg:text-xl pb-10 pt-5 flex items-center justify-center">Login</button>
                 </div>
             </form>
             <p className="text-center mx-6 text-base lg:text-xl">Do not have an account?
