@@ -1,8 +1,18 @@
-# React + Vite
+B9 A10 Type-01 Requirements
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website Name: Serendipia
+Website Live Link: https://serendipia-1ed11.web.app/
 
-Currently, two official plugins are available:
+Features of website-
+* Home page consisting of an attractive automatic slider with a typewriter showing the travel destination countries
+* Location of office shown using map
+* List of countries we offer travel tour information about
+* 6 examples of our tour destination spots
+* Private routes for logged in users to view their profile, add a tour spot and see, update and delete their added spots
+* Sweet Alerts showing errors during registration and login in a comprehensive manner
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+NPM packages used for challenge - 
+* React-tooltip: Used to show user's username when hovered over user's profile picture
+* React typewriter: Used to show the names of our travel destination countries in a the banner section
+
